@@ -47,11 +47,16 @@ const router = createBrowserRouter([
 }
 ])
 
+const domain = import.meta.env.VITE_AUTH_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH_CLIENT_ID;
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <Auth0Provider
-    domain="dev-z6wgjakkgm1vfe7u.us.auth0.com"
-    clientId="O8p6Y03mWmJ7bbrJ21CPZIri8qJ0xaVg"
+    domain={domain}
+    clientId={clientId}
     authorizationParams={{
       redirect_uri: window.location.origin
     }}
