@@ -1,15 +1,17 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "../reducers/CartReducer"
+import { json } from "react-router-dom";
 
 const CartContext = createContext();
 
 const getLocalCartData =() =>{
     let localCartData = localStorage.getItem("EstoreCart");
-    if(!localCartData){
+    const parsedCartData = JSON.parse(localCartData);
+    if(!Array.isArray(parsedCartData)){
         return [];
-    }else {
-        return JSON.parse(localCartData);
-    }
+    }else{
+        return parsedCartData;
+    }    
 }
 
 const initialState = {
